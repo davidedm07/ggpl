@@ -30,11 +30,19 @@ def find_key(dictionary, key):
 		i+=1
 	return 0
 
+def check_coordinates(v,listVerts):
+	xV,yV,zV = v
+	for i in range(len(listVerts)):
+		x,y,z = listVerts[i]
+		if xV==x or yV==y:
+			return True
+		else:
+			return False 
+
 def ggpl_roof_builder(hpcObject):
 	roofSkeleton = SKEL_2(hpcObject)
 	structureInfo= UKPOL(roofSkeleton)
 	cells = structureInfo[1]
-	print cells
 	dictionary = {}
 	verts =structureInfo[0]
 	round_vertex(verts)
@@ -47,38 +55,36 @@ def ggpl_roof_builder(hpcObject):
 			dictionary.get(','.join(map(str,v))).append(i)
 
 		i+=1
-	print dictionary
 	i=1
 	vertsDictionary = {}
 	verts=[]
+	highVerts =[]
+	highVertsV = []
 	for key in dictionary.keys():
 		vertsDictionary[str(i)] = dictionary.get(key)
-		verts.append(literal_eval(key))
+		v = literal_eval(key)
+		verts.append(v)
+		x,y,z = v
+ 		if z>0:
+ 			highVerts.append(find_key(dictionary,','.join(map(str,v))))
+ 			highVertsV.append(v)
 		i+=1
-
 	replace_cells(cells,vertsDictionary)		
-	#verts= []				
-	#for key in dictionary.keys():
-	#	verts.append(literal_eval(key))
-
  	roof = MKPOL([verts,cells,None])
  	roof = OFFSET([.1,.1,.1])(SKEL_1(roof))
- 	highVerts =[]
- 	for vertex in verts:
- 		x,y,z = vertex
- 		if z>0:
- 			highVerts.append(find_key(dictionary,','.join(map(str,vertex))))
- 	
 
  	if not highVerts:
  			highVerts=verts
  	up_cells=[]
  	for cell in cells:
  		for i in range(len(highVerts)):
- 			#if highVerts[i] in cell:
- 			#	up_cells.append(cell)
- 			if all(x in cell for x in highVerts):
- 				up_cells.append(cell)				
+ 			if check_coordinates(highVertsV[i],verts):
+ 				if all(x in cell for x in highVerts):
+ 					up_cells.append(cell)
+ 			else:
+ 				if highVerts[i] in cell:
+ 					up_cells.append(cell)
+ 							
  	upboundary_cells = MKPOL([verts,up_cells,None])
  	roof = STRUCT([roof,upboundary_cells])
  	VIEW(roof)
@@ -87,7 +93,7 @@ def ggpl_roof_builder(hpcObject):
 
 if __name__ == '__main__':
 	#verts = [[0,0,0],[8,0,0],[8,8,0],[0,8,0],[0,4,4],[8,4,4]]
-	verts = [[0,0,0],[8,0,0],[8,8,0],[0,8,0],[0,4,4],[8,4,4]]
+	verts = [[0,0,0],[8,0,0],[8,8,0],[0,8,0],[2,4,4],[6,4,4]]
 	cells=[[1,4,5],[2,6,3],[3,4,5,6],[1,2,5,6],[1,4,3,2]]
 	hpcObject=create_hpc(verts,cells)
 	ggpl_roof_builder(hpcObject)
