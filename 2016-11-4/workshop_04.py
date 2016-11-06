@@ -34,15 +34,24 @@ def find_key(dictionary, key):
 
 """check the position of the upper vertices of the roof"""
 """if these vertices have the x or y coordinate in common with"""
-"""the coordinates of the vertices of the basement then return true"""
-def check_coordinates(v,listVerts):
-	xV,yV,zV = v
-	test = False
-	for i in range(len(listVerts)):
-		x,y,z = listVerts[i]
-		if xV==x or yV==y:
-			test = True
-	return test
+"""the coordinates of the vertices of the basement or intermediate ones then return true"""
+def check_coordinates(cell,verticesList):
+	check=False	
+	verticesInCell=[]
+	for el in cell:
+		vert=verticesList[el-1]	
+		verticesInCell.append(vert)
+
+	temp=verticesInCell[0]
+	xValueTemp = temp[0]
+	yValueTemp=temp[1]
+	for v in verticesInCell:
+		if v[1]==yValueTemp or v[0]==xValueTemp:
+			check=True
+		else:
+			return False
+	return check
+
 
 """this function creates a roof from an hpc object passed as parameter"""
 def ggpl_roof_builder(hpcObject):
@@ -103,14 +112,10 @@ def ggpl_roof_builder(hpcObject):
  	roof = OFFSET([.1,.1,.1])(SKEL_1(roof))
  	"""check what are the rising faces of the roof"""
  	up_cells=[]
- 	for cell in cells:
- 		for i in range(len(highVerts)):
- 			if check_coordinates(highVertsV[i],downVertsV) and len(highVerts)<=2:
- 				if all(x in cell for x in highVerts):
- 					up_cells.append(cell)
- 			else:
- 				if highVerts[i] in cell:
- 					up_cells.append(cell)
+ 	for index in highVerts:
+		for cell in cells:
+			if index in cell and not check_coordinates(cell,verts) and not cell in up_cells:
+				up_cells.append(cell)
  	"""creates the faces of the roof"""										
  	upboundary_cells = MKPOL([verts,up_cells,None])
  	"""assemble the final roof"""
@@ -128,8 +133,11 @@ if __name__ == '__main__':
 	#gable and hip roof cells
 	#cells=[[1,4,5],[2,6,3],[3,4,5,6],[1,2,5,6],[1,4,3,2]]
 	#mansard
-	verts = [[0,0,0],[8,0,0],[8,8,0],[0,8,0],[2,2,4],[2,6,4],[6,2,4],[6,6,4]]
-	cells=[[1,4,5,6],[2,7,3,8],[3,4,8,6],[1,2,5,7],[1,4,3,2],[7,8,5,6]]
+	#verts = [[0,0,0],[8,0,0],[8,8,0],[0,8,0],[2,2,4],[2,6,4],[6,2,4],[6,6,4]]
+	#cells=[[1,4,5,6],[2,7,3,8],[3,4,8,6],[1,2,5,7],[1,4,3,2],[7,8,5,6]]
+	#gambrel
+	verts = [[0,0,0],[2,0,3],[2,8,3],[0,8,0],[6,0,6],[6,8,6],[10,0,3],[10,8,3],[12,0,0],[12,8,0]]
+	cells=[[1,2,3,4],[2,3,6,5],[5,6,8,7],[7,8,10,9],[1,4,9,10],[1,2,5,7,9],[3,4,6,8,10]]
 	hpcObject=create_hpc(verts,cells)
 	ggpl_roof_builder(hpcObject)
 
