@@ -47,11 +47,11 @@ def ggpl_doors(x,y,occurences):
 				sumY=sum(y[:j])
 				if occurences[j][i]==True:
 					cube = CUBOID([x[i],y[j],dy])
-					cube = TEXTURE(["wooden_texture.jpg"])(cube) 
+					cube = TEXTURE(["Texture/wooden_texture.jpg"])(cube) 
 					s=STRUCT([s,T([1,2])([sumX,sumY])(cube)])
 				else:
 					cube = CUBOID([x[i],y[j],dy])
-					cube = TEXTURE(["glass_texture_2.jpg"])(cube) 
+					cube = TEXTURE(["Texture/glass_texture_2.jpg"])(cube) 
 					s=STRUCT([s,T([1,2])([sumX,sumY])(cube)])
 
 		s = R([2,3])(PI/2)(s)
@@ -63,7 +63,7 @@ def ggpl_doors(x,y,occurences):
 		lockOrizzontalCylinder = R([2,3])(PI/2)(lockOrizzontalCylinder) 
 		lock = STRUCT([lockBase,T([2,3])([0.05,0.3]),lockCylinder])
 		lock = STRUCT([lock,T([1,2,3])([-0.1,0.065,0.3]),lockOrizzontalCylinder])
-		lock = TEXTURE(["gold_texture.jpg"])(lock)
+		lock = TEXTURE(["Texture/gold_texture.jpg"])(lock)
 		lock = R([1,2])(-PI/2)(lock)
 		door = STRUCT([s,SKEL_1(CUBOID([dx,dy,dz]))])
 		door = STRUCT([door,T([1,2,3])([dx-0.15,dy+0.01,dz/2.5]),lock])
@@ -86,11 +86,11 @@ def ggpl_windows(x,y,occurences):
 				sumY=sum(y[:j])
 				if occurences[j][i]==True:
 					cube=CUBOID([x[i],y[j],dy])
-					cube = TEXTURE(["white_wood_texture.jpg"])(cube) 
+					cube = TEXTURE(["Texture/white_wood_texture.jpg"])(cube) 
 					s=STRUCT([s,T([1,2])([sumX,sumY])(cube)])
 				else:
 					cube = CUBOID([x[i],y[j],dy])
-					cube = TEXTURE(["glass_texture.jpg"])(cube) 
+					cube = TEXTURE(["Texture/glass_texture.jpg"])(cube) 
 					s=STRUCT([s,T([1,2])([sumX,sumY])(cube)])
 		window = R([2,3])(PI/2)(s)
 		window = T(2)(dy)(window)
@@ -99,33 +99,21 @@ def ggpl_windows(x,y,occurences):
 	return windows		
 	
 if __name__=='__main__':
-	
-	
-	XWindow = [.1,.3,.05,.3,.1]
-	YWindow = [.1,.3,.05,.3,.1]
-	occurencesWindow = [[True, True, True, True, True],
-			  [True, False, True, False, True],
-			  [True, True, True, True, True],
-			  [True, False, True, False, True],
-			  [True, True, True, True, True]]
-
-	"""XWindow = [.1,.2,.1,.5,.1,.2,.1]
-	YWindow = [.1,.1,.6,.1]
-	occurencesWindow = [[True]*7,[True,False,True,False,True,False,True],
-	[True,False,True,False,True,False,True],[True]*7]		  
-	"""	  
-
-	"""			
+	#Window1
+	XWindow = [.1,.2,.1,.5,.1,.2,.1]
+	YWindow = [.1,.6,.1]
+	occurencesWindow = [[True]*7,[True,False,True,False,True,False,True],[True]*7]
+	#Door1		  		
 	XDoor = [.2,.4,.1,.4,.2]
 	YDoor = [.3,.6,.1,.6,.1,.6,.1,.6,.3]
-	
 	occurencesDoor = [[True]*5, [True,False,True,False,True], [True]*5, [True,False,True,False,True], 
 	[True]*5, [True,False,True,False,True], [True]*5, [True,False,True,False,True], [True]*5]
+	#Door2
 	"""
-
 	XDoor = [.2,.2,.3,.2,.2]
 	YDoor = [.4,.4,.4,.4,.4,.4,.4]
 	occurencesDoor = [[True]*5,[True,False,False,True,True],[True]*5,
 	[True,True,False,False,True],[True]*5,[True,False,False,True,True],[True]*5]
+	"""
 	VIEW(ggpl_windows(XWindow,YWindow,occurencesWindow)(3,0.05,2))
 	VIEW(ggpl_doors(XDoor,YDoor,occurencesDoor)(1.5,0.1,3))
