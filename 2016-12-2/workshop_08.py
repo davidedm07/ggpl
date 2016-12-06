@@ -1,8 +1,7 @@
 import csv
 from pyplasm import *
-#DIFFERENCE
 def ggpl_house_builder():
-		with open("muri_esterni.lines", "rb") as csvfile:
+		with open("Lines_Files/muri_esterni.lines", "rb") as csvfile:
 			csvReader = csv.reader(csvfile,delimiter=",")
 			externalWalls_list = []
 			for row in csvReader :
@@ -14,9 +13,8 @@ def ggpl_house_builder():
 		pavement = SOLIDIFY (externalWalls)
 		externalWalls = OFFSET([.2,.2])(externalWalls)
 		externalWalls = PROD([externalWalls,Q(3)])
-		externalWalls = TEXTURE("external_walls.jpg")(externalWalls)
-		pavement = TEXTURE("parquet_texture.jpg")(pavement)
-		with open("muri_interni.lines", "rb") as csvfile:
+		pavement = TEXTURE("Texture/parquet_texture.jpg")(pavement)
+		with open("Lines_Files/muri_interni.lines", "rb") as csvfile:
 			csvReader = csv.reader(csvfile,delimiter=",")
 			internalWalls_list = []
 			for row in csvReader :
@@ -25,8 +23,7 @@ def ggpl_house_builder():
 		internalWalls = S([1,2])([xScale,yScale])(internalWalls)
 		internalWalls = OFFSET([.2,.2])(internalWalls)
 		internalWalls = PROD([internalWalls,Q(3)])
-		
-		with open("porte.lines", "rb") as csvfile:
+		with open("Lines_Files/porte.lines", "rb") as csvfile:
 			csvReader = csv.reader(csvfile,delimiter=",")
 			listDoors = []
 			cuboid = []
@@ -38,7 +35,7 @@ def ggpl_house_builder():
 					listDoors.append(MKPOL([cuboid,[[1,2,3,4]],None]))
 					cuboid = []
 					cont = 0
-		with open("finestre.lines", "rb") as csvfile:
+		with open("Lines_Files/finestre.lines", "rb") as csvfile:
 			csvReader = csv.reader(csvfile,delimiter=",")
 			listWindows = []
 			cuboid = []
@@ -55,13 +52,16 @@ def ggpl_house_builder():
 			doors = S([1,2])([xScale, yScale])(doors)
 			windows = STRUCT(listWindows)
 			windows = S([1,2])([xScale, yScale])(windows)
+			windows = OFFSET([.2,.2])(windows)
+        	windows = PROD([windows, Q(1.5)])
+        	windows = T(3)(1)(windows)
         	doors = OFFSET([.2,.2])(doors)
         	doors = PROD([doors, Q(3)])
-        	V#IEW(doors)
+        	externalWalls = DIFFERENCE([externalWalls,windows])
+        	externalWalls = TEXTURE("Texture/external_walls.jpg")(externalWalls)
         	internalWalls = DIFFERENCE([internalWalls,doors])
-        	internalWalls = TEXTURE("internal_walls.jpg")(internalWalls)
+        	internalWalls = TEXTURE("Texture/internal_walls.jpg")(internalWalls)
         	walls = STRUCT([internalWalls,externalWalls])
-        	internalWalls = DIFFERENCE([internalWalls,doors])
 		house = STRUCT([walls,pavement])
 		VIEW(house)
 
