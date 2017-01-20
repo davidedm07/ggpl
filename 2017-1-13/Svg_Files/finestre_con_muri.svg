@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="297mm"
+   width="210mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg4"
+   inkscape:version="0.92.0 unknown"
+   sodipodi:docname="finestre_con_muri.svg">
+  <metadata
+     id="metadata51">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs49" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     id="namedview47"
+     showgrid="false"
+     inkscape:zoom="1.1893044"
+     inkscape:cx="402.2068"
+     inkscape:cy="696.17565"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="muri_esterni"
+     style="display:inline">
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 35.692573,45.607694 V 226.19885 l 87.149327,-0.31462 v -50.96825 h 78.65466 V 44.663833 Z"
+       id="path3566"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="finestre"
+     style="display:inline">
+    <rect
+       id="rect27"
+       width="1.6685174"
+       height="10.233573"
+       x="35.052357"
+       y="212.71683"
+       style="fill:#0000ff;stroke-width:0.17838204" />
+    <rect
+       style="fill:#0000ff;stroke-width:0.21603137"
+       id="rect32"
+       width="24.360353"
+       height="1.7797515"
+       x="67.296867"
+       y="225.14252" />
+    <rect
+       style="display:inline;fill:#0000ff;stroke-width:0.17623582"
+       id="rect34"
+       width="1.8844374"
+       height="11.798199"
+       x="34.906857"
+       y="108.22881" />
+    <rect
+       style="display:inline;fill:#0000ff;stroke-width:0.24006082"
+       id="rect36"
+       width="25.169491"
+       height="3.1080167"
+       x="49.709743"
+       y="43.325218" />
+    <rect
+       style="display:inline;fill:#0000ff;stroke-width:0.251504"
+       id="rect38"
+       width="25.012182"
+       height="3.1271017"
+       x="165.80403"
+       y="42.676895" />
+    <rect
+       style="fill:#0000ff;stroke-width:0.21474814"
+       id="rect43"
+       width="1.8653527"
+       height="11.011652"
+       x="200.67271"
+       y="128.79025" />
+    <rect
+       style="fill:#0000ff;stroke-width:0.16532227"
+       id="rect45"
+       width="12.427436"
+       height="1.7811079"
+       x="130.88135"
+       y="173.9492" />
+  </g>
+</svg>
