@@ -16,7 +16,7 @@ def ggpl_house_builder():
 	YWindow = [.1,.6,.1]
 	occurencesWindow = [[True]*7,[True,False,True,False,True,False,True],[True]*7]
 	""" Creation of the external walls of the house"""
-	with open("Lines_Files/Modello_1/muri_esterni.lines", "rb") as csvfile:
+	with open("Lines_Files/muri_esterni.lines", "rb") as csvfile:
 		csvReader = csv.reader(csvfile,delimiter=",")
 		externalWalls_list = []
 		for row in csvReader :
@@ -35,7 +35,7 @@ def ggpl_house_builder():
 	roof = TEXTURE("Texture/roof_texture.png")(roof)
 
 	""" Creation of the internal walls of the house"""
-	with open("Lines_Files/Modello_1/muri_interni.lines", "rb") as csvfile:
+	with open("Lines_Files/muri_interni.lines", "rb") as csvfile:
 		csvReader = csv.reader(csvfile,delimiter=",")
 		internalWalls_list = []
 		for row in csvReader :
@@ -46,7 +46,7 @@ def ggpl_house_builder():
 	internalWalls = PROD([internalWalls,Q(3)])
 	
 	"""Creation of the doors of the house"""
-	with open("Lines_Files/Modello_1/porte.lines", "rb") as csvfile:
+	with open("Lines_Files/porte.lines", "rb") as csvfile:
 		csvReader = csv.reader(csvfile,delimiter=",")
 		listDoorsHoles = []
 		cuboid = []
@@ -81,7 +81,7 @@ def ggpl_house_builder():
 				listDoorsCreated.append(door)
 	
 	""" Creation of the windows of the house"""	
-	with open("Lines_Files/Modello_1/finestre.lines", "rb") as csvfile:
+	with open("Lines_Files/finestre.lines", "rb") as csvfile:
 		csvReader = csv.reader(csvfile,delimiter=",")
 		listWindowsHoles = []
 		listWindowsCreated = []
@@ -114,7 +114,7 @@ def ggpl_house_builder():
 				listWindowsCreated.append(window)
 
 	""" Creation of the external doors of the house"""
-	with open("Lines_Files/Modello_1/porte_esterne.lines","rb") as csvfile:
+	with open("Lines_Files/porte_esterne.lines","rb") as csvfile:
 		csvReader = csv.reader(csvfile, delimiter=",")
 		listExternalDoorsHoles = []
 		cuboid = []
@@ -155,7 +155,7 @@ def ggpl_house_builder():
 		stair = T([1,2])([float(row[0]) * xScale+2.5, float(row[1]) * yScale+6])(stair)
 	
 	"""Creation of the garden of the house"""		
-	with open("Lines_Files/Modello_1/giardino.lines", "rb") as csvfile:
+	with open("Lines_Files/giardino.lines", "rb") as csvfile:
 		csvReader = csv.reader(csvfile,delimiter=",")
 		gardenBordersList = []
 		for row in csvReader :

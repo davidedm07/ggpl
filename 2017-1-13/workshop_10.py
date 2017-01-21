@@ -7,5 +7,5 @@ def ggpl_multistory_house():
 	VIEW(house)
 	
 
-if __name__ == "__main__":
+if __name__ == "__main__":	
 	ggpl_multistory_house()

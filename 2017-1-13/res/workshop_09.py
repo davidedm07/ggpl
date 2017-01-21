@@ -13,14 +13,14 @@ def builder_roof():
 	top_shape = []
 	pol= []
 	pol2 = []
-	with open("Lines_Files/Modello_1/muri_esterni.lines", "rb") as file:
+	with open("Lines_Files/muri_esterni.lines", "rb") as file:
 		reader = csv.reader(file, delimiter=",")
 		polylineList = []
 		reader2 = reader
 		row1=next(reader2)
 		px = row1[0]
 		py = row1[1]
-	with open("Lines_Files/Modello_1/muri_esterni.lines", "rb") as file:
+	with open("Lines_Files/muri_esterni.lines", "rb") as file:
 		reader = csv.reader(file, delimiter=",")
 		for row in reader:
 			first_shape.append([float(row[0])-float(px),float(row[1])-float(py)])

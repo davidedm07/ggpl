@@ -1,6 +1,5 @@
 from pyplasm import *
 import math
-""" function that creates a z shaped stair"""
 
 def ggpl_stair(dx,dy,dz):
     #get steps dimensions
@@ -33,10 +32,6 @@ def ggpl_stair(dx,dy,dz):
     stair = STRUCT([stair,T(2)(dy-4*stepY),pillar])
     stair = STRUCT([stair,T([1,2])([dx-0.4,dy-4*stepY]),pillar])
     box = SKEL_1(CUBOID([dx,dy,dz]))
-    #stair = STRUCT([stair,box])
-    #VIEW(stair)
 
     return stair	
 	
-
-#ggpl_stair(8.,6.,3.5)
