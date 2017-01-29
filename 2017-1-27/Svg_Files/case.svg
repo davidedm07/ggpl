@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.0 unknown"
+   sodipodi:docname="case.svg">
+  
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="case"
+     style="display:inline">
+    <rect
+       style="fill:#0000ff;stroke-width:0.26458332"
+       id="rect30"
+       width="33.072918"
+       height="9.260417"
+       x="218.47023"
+       y="16.665178"
+       ry="0" />
+    <rect
+       style="fill:#0000ff;stroke-width:0.26458332"
+       id="rect33"
+       width="32.339611"
+       height="11.759859"
+       x="176.39789"
+       y="22.109522" />
+    <rect
+       style="fill:#0000ff;stroke-width:0.26458332"
+       id="rect42"
+       width="31.270535"
+       height="7.7508163"
+       x="133.90204"
+       y="23.980408" />
+    <rect
+       style="fill:#0000ff;stroke-width:0.26458332"
+       id="rect46"
+       width="33.141422"
+       height="8.2853556"
+       x="67.619186"
+       y="27.722181" />
+  </g>
+</svg>
