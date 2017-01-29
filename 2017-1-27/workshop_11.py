@@ -62,10 +62,11 @@ def ggpl_suburban_housing_neighbourhood():
 		basement = SOLIDIFY(basement)
 		woodPlatform = basement
 		woodPlatform = PROD([woodPlatform,Q(3)])
-		woodPlatform =  MATERIAL([.7,0,0,1,  0,0,0,1,  0,0,0,0, 0,0,0,1, 1])(woodPlatform)
+		#woodPlatform =  MATERIAL([101./255.,60./255.,34./255.,1,  0,0,0,1,  0,0,0,0, 0,0,0,1, 1])(woodPlatform)
+		woodPlatform = TEXTURE("Texture/platform_wood_texture.jpg")(woodPlatform)
 		basement = PROD([basement,Q(0.1)])
-		basement = MATERIAL([.15,.3,0,1,  0,0,0,1,  0,0,0,0, 0,0,0,1, 1])(basement)
-		#basement = TEXTURE("Texture/grass_texture_2.jpg")(basement)
+		#basement = MATERIAL([.15,.3,0,1,  0,0,0,1,  0,0,0,0, 0,0,0,1, 1])(basement)
+		basement = TEXTURE("Texture/grass_texture_2.jpg")(basement)
 		basementComplete = STRUCT([woodPlatform,T(3)(3),basement])
 
 	""" Building the houses of the neighbourhood"""
@@ -92,6 +93,7 @@ def ggpl_suburban_housing_neighbourhood():
 	neighbourhood = STRUCT([neighbourhood,basementComplete])
 	""" Putting the trees in the neighbourhood"""
 	tree = ggpl_build_tree()
+	tree = T(3)(0.05)(tree) 
 	neighbourhood = STRUCT([neighbourhood,T([1,2])([100,100]),tree])
 	neighbourhood = STRUCT([neighbourhood,T([1,2])([150,118]),tree])
 	neighbourhood = STRUCT([neighbourhood,T([1,2])([170,118]),tree])
